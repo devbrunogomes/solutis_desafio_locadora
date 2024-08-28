@@ -1,6 +1,7 @@
 package com.squad1.locadora.entities.aluguel;
 
 import com.squad1.locadora.entities.carro.Carro;
+import com.squad1.locadora.entities.pessoa.Motorista;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,7 +37,11 @@ public class Aluguel {
     private ApoliceSeguro apolice;
     
     @ManyToOne
-    @JoinColumn(name = "carro_id")
+    @JoinColumn(name = "carro_id", nullable = false)
     private Carro carro;
+    
+    @ManyToOne
+    @JoinColumn(name = "motorista_id", nullable = false)
+    private Motorista motorista;
 
 }
