@@ -2,6 +2,7 @@ package com.squad1.locadora.entities.carro;
 
 import com.squad1.locadora.entities.aluguel.Aluguel;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,7 +36,7 @@ public class Carro {
     @JoinColumn(name = "modelo_id")  // Nome da coluna que armazenará o ID do modelo  
     private ModeloCarro modeloCarro;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "carro_acessorio", // Nome da tabela de junção
             joinColumns = @JoinColumn(name = "carro_id"), // FK para Carro
