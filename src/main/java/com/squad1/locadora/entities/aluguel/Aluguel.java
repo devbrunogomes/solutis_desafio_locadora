@@ -44,4 +44,6 @@ public class Aluguel {
     @JoinColumn(name = "motorista_id", nullable = false)
     private Motorista motorista;
 
+
+
 }
