@@ -1,0 +1,10 @@
+INSERT INTO acessorio (descricao) VALUES ('Ar Condicionado');
+INSERT INTO acessorio (descricao) VALUES ('Airbags');
+INSERT INTO acessorio (descricao) VALUES ('Trava Elétrica');
+INSERT INTO acessorio (descricao) VALUES ('Vidros Elétricos');
+INSERT INTO acessorio (descricao) VALUES ('Direção Hidráulica');
+INSERT INTO acessorio (descricao) VALUES ('Sensor de Estacionamento');
+INSERT INTO acessorio (descricao) VALUES ('Câmera de Ré');
+INSERT INTO acessorio (descricao) VALUES ('Faróis de Neblina');
+INSERT INTO acessorio (descricao) VALUES ('Rodas de Liga Leve');
+INSERT INTO acessorio (descricao) VALUES ('Sistema de Som');

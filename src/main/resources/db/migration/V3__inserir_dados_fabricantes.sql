@@ -1,0 +1,10 @@
+INSERT INTO fabricantes (nome) VALUES ('Toyota');
+INSERT INTO fabricantes (nome) VALUES ('Honda');
+INSERT INTO fabricantes (nome) VALUES ('Ford');
+INSERT INTO fabricantes (nome) VALUES ('Chevrolet');
+INSERT INTO fabricantes (nome) VALUES ('Nissan');
+INSERT INTO fabricantes (nome) VALUES ('Volkswagen');
+INSERT INTO fabricantes (nome) VALUES ('Hyundai');
+INSERT INTO fabricantes (nome) VALUES ('Kia');
+INSERT INTO fabricantes (nome) VALUES ('BMW');
+INSERT INTO fabricantes (nome) VALUES ('Mercedes-Benz');
