@@ -1,5 +1,6 @@
 package com.squad1.locadora.entities.carro;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,8 @@ public class Acessorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(unique = true, nullable = false)
     private String descricao;
     
     // Relação muitos-para-muitos com Carro (mapeada do outro lado)

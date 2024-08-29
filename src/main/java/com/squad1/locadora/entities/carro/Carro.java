@@ -30,6 +30,7 @@ public class Carro {
     private String chassi;
     private String cor;
     private float valorDiaria;
+    private boolean reserva ;
 
     @ManyToOne
     @JoinColumn(name = "modelo_id")  // Nome da coluna que armazenará o ID do modelo  
@@ -45,4 +46,12 @@ public class Carro {
 
     @OneToMany(mappedBy = "carro")
     private Set<Aluguel> aluguel;
+
+
+
+
+
+
+
+
 }
