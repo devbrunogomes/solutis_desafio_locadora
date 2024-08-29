@@ -22,4 +22,7 @@ public class Motorista extends Pessoa {
 
     @OneToMany(mappedBy = "motorista")
     private Set<Aluguel> aluguel;
+
+    @Column(unique = true, nullable = false)
+    private String email;
 }
