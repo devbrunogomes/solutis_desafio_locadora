@@ -1,1 +1,0 @@
-ALTER TABLE  carros ADD COLUMN reserva BOOLEAN;
