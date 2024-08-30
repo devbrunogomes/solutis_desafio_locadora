@@ -2,13 +2,19 @@ package com.squad1.locadora.entities.aluguel;
 
 import com.squad1.locadora.entities.carro.Carro;
 import com.squad1.locadora.entities.pessoa.Motorista;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import java.util.Calendar;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 @Table(name = "alugueis")
