@@ -7,7 +7,10 @@ import com.squad1.locadora.repositories.CarroRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +50,7 @@ public class CarroController {
     public List<CarroDisponivelDTO> procurarCarrosDisponiveis() {
         List<Carro> todosOsCarros = this.findAll();
         List<CarroDisponivelDTO> carrosDisponiveis = new ArrayList<>();
-        
+
         //Nova instancia de DTO para personalizar a exibição
         for (Carro carro : todosOsCarros) {
             if (!carro.isReserva()) {
@@ -64,4 +67,27 @@ public class CarroController {
 
         return carrosDisponiveis;
     }
+
+    @PatchMapping(value = "/reservar-carro/{id}")
+    public ResponseEntity<String> reservarCarroPorId(@PathVariable Long id) {
+        Carro carroASerReservado = carroRepository.findById(id).orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+
+        //Verifica se já está reservado
+        if (carroASerReservado.isReserva()) {
+            //Se já estiver, erro 409
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("O carro " + carroASerReservado.getModeloCarro().getNomeFabricante().getNome() + " "
+                            + carroASerReservado.getModeloCarro().getDescricao()
+                            + " " + carroASerReservado.getPlaca() + " já está reservado");
+        } else {
+
+            carroASerReservado.setReserva(true);
+            carroRepository.save(carroASerReservado);
+
+            return ResponseEntity.ok("O carro " + carroASerReservado.getModeloCarro().getNomeFabricante().getNome() + " "
+                    + carroASerReservado.getModeloCarro().getDescricao()
+                    + " " + carroASerReservado.getPlaca() + " foi reservado com sucesso!");
+        }
+    }
+
 }
