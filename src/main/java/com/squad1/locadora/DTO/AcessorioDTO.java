@@ -1,4 +1,4 @@
-package com.squad1.locadora.dto;
+package com.squad1.locadora.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

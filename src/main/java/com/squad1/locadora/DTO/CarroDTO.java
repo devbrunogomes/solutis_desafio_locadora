@@ -1,7 +1,7 @@
 package com.squad1.locadora.DTO;
 
-import com.squad1.locadora.dto.AcessorioDTO;
-import com.squad1.locadora.dto.AluguelDTO;
+import com.squad1.locadora.DTO.AcessorioDTO;
+import com.squad1.locadora.DTO.AluguelDTO;
 import java.util.Set;
 import java.util.Set;
 import lombok.AllArgsConstructor;

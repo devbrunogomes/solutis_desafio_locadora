@@ -38,7 +38,7 @@ public class Carro {
     @JoinColumn(name = "modelo_id")  // Nome da coluna que armazenará o ID do modelo  
     private ModeloCarro modeloCarro;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "carro_acessorio", // Nome da tabela de junção
             joinColumns = @JoinColumn(name = "carro_id"), // FK para Carro
