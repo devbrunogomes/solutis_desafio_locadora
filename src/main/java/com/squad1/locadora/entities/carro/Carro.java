@@ -1,5 +1,6 @@
 package com.squad1.locadora.entities.carro;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.squad1.locadora.entities.aluguel.Aluguel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -46,6 +47,7 @@ public class Carro {
     private Set<Acessorio> acessorios;
 
     @OneToMany(mappedBy = "carro")
+    @JsonIgnore
     private Set<Aluguel> aluguel;
 
     private String urlImagem;
