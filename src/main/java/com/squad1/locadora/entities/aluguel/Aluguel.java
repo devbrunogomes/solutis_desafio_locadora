@@ -1,5 +1,6 @@
 package com.squad1.locadora.entities.aluguel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.squad1.locadora.entities.carro.Carro;
 import com.squad1.locadora.entities.pessoa.Motorista;
 import jakarta.persistence.Entity;
@@ -16,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -23,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode(exclude = {"apolice", "carro", "motorista"})
 public class Aluguel {
 
     @Id
@@ -44,6 +47,7 @@ public class Aluguel {
     
     @ManyToOne
     @JoinColumn(name = "motorista_id", nullable = false)
+    @JsonIgnore
     private Motorista motorista;
     
     @Enumerated(EnumType.STRING)
