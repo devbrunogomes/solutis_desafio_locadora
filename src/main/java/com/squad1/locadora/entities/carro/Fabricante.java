@@ -1,5 +1,6 @@
 package com.squad1.locadora.entities.carro;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,5 +29,6 @@ public class Fabricante {
     private String nome;
     
     @OneToMany(mappedBy = "nomeFabricante")
+    @JsonIgnore
     private Set<ModeloCarro> modelosCarro;
 }

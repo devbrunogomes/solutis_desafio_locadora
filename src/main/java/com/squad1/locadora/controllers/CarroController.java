@@ -1,5 +1,6 @@
 package com.squad1.locadora.controllers;
 
+import com.squad1.locadora.DTO.CarroDisponivelDTO;
 import com.squad1.locadora.entities.carro.Carro;
 import com.squad1.locadora.entities.pessoa.Motorista;
 import com.squad1.locadora.repositories.CarroRepository;
@@ -17,8 +18,7 @@ public class CarroController {
 
     @Autowired
     private CarroRepository carroRepository;
-    
-    
+
     //Listar todos os carros
     @GetMapping
     public List<Carro> findAll() {
@@ -29,7 +29,7 @@ public class CarroController {
         });
         return carros;
     }
-    
+
     //Listar Carros por ID
     @GetMapping(value = "/{id}")
     public Carro findById(@PathVariable Long id) {
@@ -41,19 +41,27 @@ public class CarroController {
 
         return result;
     }
-    
+
     //Listar carros disponiveis
     @GetMapping(value = "/disponiveis")
-    public List<Carro> procurarCarrosDisponiveis(){
+    public List<CarroDisponivelDTO> procurarCarrosDisponiveis() {
         List<Carro> todosOsCarros = this.findAll();
-        List<Carro> carrosDisponiveis = new ArrayList<>();
+        List<CarroDisponivelDTO> carrosDisponiveis = new ArrayList<>();
         
+        //Nova instancia de DTO para personalizar a exibição
         for (Carro carro : todosOsCarros) {
             if (!carro.isReserva()) {
-                carrosDisponiveis.add(carro);
+                CarroDisponivelDTO dto = new CarroDisponivelDTO(
+                        carro.getId(),
+                        carro.getValorDiaria(),
+                        carro.getModeloCarro(),
+                        carro.getAcessorios(),
+                        carro.isReserva()
+                );
+                carrosDisponiveis.add(dto);
             }
         }
-        
+
         return carrosDisponiveis;
     }
 }
