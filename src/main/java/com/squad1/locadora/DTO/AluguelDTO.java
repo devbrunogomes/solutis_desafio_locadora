@@ -1,4 +1,4 @@
-package com.squad1.locadora.dto;
+package com.squad1.locadora.DTO;
 
 import java.util.Calendar;
 import java.util.Date;
