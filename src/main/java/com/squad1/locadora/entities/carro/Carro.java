@@ -48,7 +48,7 @@ public class Carro {
     @OneToMany(mappedBy = "carro")
     private Set<Aluguel> aluguel;
 
-
+    private String urlImagem;
 
 
 
