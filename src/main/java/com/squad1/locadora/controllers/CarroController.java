@@ -3,6 +3,7 @@ package com.squad1.locadora.controllers;
 import com.squad1.locadora.entities.carro.Carro;
 import com.squad1.locadora.entities.pessoa.Motorista;
 import com.squad1.locadora.repositories.CarroRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,9 @@ public class CarroController {
 
     @Autowired
     private CarroRepository carroRepository;
-
+    
+    
+    //Listar todos os carros
     @GetMapping
     public List<Carro> findAll() {
         List<Carro> carros = carroRepository.findAll();
@@ -26,7 +29,8 @@ public class CarroController {
         });
         return carros;
     }
-
+    
+    //Listar Carros por ID
     @GetMapping(value = "/{id}")
     public Carro findById(@PathVariable Long id) {
         Carro result = carroRepository.findByIdWithAcessorios(id).orElse(null);
@@ -36,5 +40,20 @@ public class CarroController {
         }
 
         return result;
+    }
+    
+    //Listar carros disponiveis
+    @GetMapping(value = "/disponiveis")
+    public List<Carro> procurarCarrosDisponiveis(){
+        List<Carro> todosOsCarros = this.findAll();
+        List<Carro> carrosDisponiveis = new ArrayList<>();
+        
+        for (Carro carro : todosOsCarros) {
+            if (!carro.isReserva()) {
+                carrosDisponiveis.add(carro);
+            }
+        }
+        
+        return carrosDisponiveis;
     }
 }
