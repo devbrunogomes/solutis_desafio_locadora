@@ -70,7 +70,8 @@ public class CarroController {
 
     @PatchMapping(value = "/reservar-carro/{id}")
     public ResponseEntity<String> reservarCarroPorId(@PathVariable Long id) {
-        Carro carroASerReservado = carroRepository.findById(id).orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+        Carro carroASerReservado = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
 
         //Verifica se já está reservado
         if (carroASerReservado.isReserva()) {
@@ -80,13 +81,36 @@ public class CarroController {
                             + carroASerReservado.getModeloCarro().getDescricao()
                             + " " + carroASerReservado.getPlaca() + " já está reservado");
         } else {
-
+            // Se estiver disponivel, reserva o carro
             carroASerReservado.setReserva(true);
             carroRepository.save(carroASerReservado);
 
             return ResponseEntity.ok("O carro " + carroASerReservado.getModeloCarro().getNomeFabricante().getNome() + " "
                     + carroASerReservado.getModeloCarro().getDescricao()
                     + " " + carroASerReservado.getPlaca() + " foi reservado com sucesso!");
+        }
+    }
+
+    @PatchMapping(value = "/devolver-carro/{id}")
+    public ResponseEntity<String> devolverCarroPorId(@PathVariable Long id) {
+        Carro carroASerDevolvido = carroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Carro não encontrado"));
+
+        // Verifica se o carro está reservado
+        if (!carroASerDevolvido.isReserva()) {
+            // Se não estiver reservado, erro 409
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("O carro " + carroASerDevolvido.getModeloCarro().getNomeFabricante().getNome() + " "
+                            + carroASerDevolvido.getModeloCarro().getDescricao()
+                            + " " + carroASerDevolvido.getPlaca() + " já está disponível.");
+        } else {
+            // Se estiver reservado, devolve o carro e marca como disponível
+            carroASerDevolvido.setReserva(false);
+            carroRepository.save(carroASerDevolvido);
+
+            return ResponseEntity.ok("O carro " + carroASerDevolvido.getModeloCarro().getNomeFabricante().getNome() + " "
+                    + carroASerDevolvido.getModeloCarro().getDescricao()
+                    + " " + carroASerDevolvido.getPlaca() + " foi devolvido com sucesso!");
         }
     }
 
