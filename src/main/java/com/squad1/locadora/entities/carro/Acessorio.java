@@ -1,5 +1,6 @@
 package com.squad1.locadora.entities.carro;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,5 +26,6 @@ public class Acessorio {
     
     // Relação muitos-para-muitos com Carro (mapeada do outro lado)
     @ManyToMany(mappedBy = "acessorios")
+    @JsonIgnore
     private Set<Carro> carros;
 }
