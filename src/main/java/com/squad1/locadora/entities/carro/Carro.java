@@ -1,6 +1,7 @@
 package com.squad1.locadora.entities.carro;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.squad1.locadora.entities.aluguel.Aluguel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -52,9 +53,19 @@ public class Carro {
 
     private String urlImagem;
 
+    public Long getId() {
+        return id;
+    }
 
+    public ModeloCarro getModeloCarro() {
+        return modeloCarro;
+    }
 
+    public Set<Acessorio> getAcessorios() {
+        return acessorios;
+    }
 
-
-
+    public Set<Aluguel> getAluguel() {
+        return aluguel;
+    }
 }
