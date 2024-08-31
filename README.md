@@ -30,6 +30,7 @@ O projeto é organizado nas seguintes camadas:
 2. **Repository**: Contém as interfaces que estendem `JpaRepository` para realizar operações de persistência.
 3. **Service**: Contém as classes de serviço responsáveis pela lógica de negócios.
 4. **Controller**: Contém as classes responsáveis por gerenciar as requisições HTTP.
+5. **DTO**: Este objeto carrega dados entre processos na aplicação, em especial entre a camada de controle (Controller) e outras camadas (como a de serviço ou persistência).
 
 
 ## Classes Implementadas
