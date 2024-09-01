@@ -20,15 +20,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Fabricante {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(unique = true, nullable = false)
     private String nome;
-    
+
     @OneToMany(mappedBy = "nomeFabricante")
     @JsonIgnore
     private Set<ModeloCarro> modelosCarro;
+    
+    
 }

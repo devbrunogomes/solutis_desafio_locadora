@@ -22,4 +22,5 @@ public interface CarroRepository extends JpaRepository<Carro, Long> {
     @Query("SELECT c FROM Carro c LEFT JOIN FETCH c.acessorios LEFT JOIN FETCH c.modeloCarro WHERE c.id = :id")
     Optional<Carro> findByIdWithAcessorios(@Param("id") Long id);
 
+
 }
