@@ -23,13 +23,14 @@ public class ModeloCarro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "fabricante_id")
     private Fabricante nomeFabricante;
-    
+
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
+
 }
