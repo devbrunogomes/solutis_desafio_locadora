@@ -40,16 +40,16 @@ public class Aluguel {
     @OneToOne
     @JoinColumn(name = "apolice_id")
     private ApoliceSeguro apolice;
-    
+
     @ManyToOne
     @JoinColumn(name = "carro_id", nullable = false)
     private Carro carro;
-    
+
     @ManyToOne
     @JoinColumn(name = "motorista_id", nullable = false)
     @JsonIgnore
     private Motorista motorista;
-    
+
     @Enumerated(EnumType.STRING)
     private MetodoPagamento metodoPagamento;
 

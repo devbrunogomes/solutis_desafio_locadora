@@ -24,10 +24,10 @@ public abstract class Pessoa {
     private Long id;
     private String nome;
     private Date dataNascimento;
-    
+
     @Column(unique = true, nullable = false)
     private String cpf;
-    
+
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 }
