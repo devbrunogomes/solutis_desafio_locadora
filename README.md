@@ -1,4 +1,4 @@
-# Solutis School Dev Trail 2024 - SQUAD 1 - Livraria Virtual
+# Solutis School Dev Trail 2024 - SQUAD 1 - Locadora de automoveis
 
 ---
 
