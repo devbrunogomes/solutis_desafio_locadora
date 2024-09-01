@@ -68,4 +68,6 @@ public class Carro {
     public Set<Aluguel> getAluguel() {
         return aluguel;
     }
+    
+    
 }

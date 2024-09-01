@@ -31,4 +31,6 @@ public class Fabricante {
     @OneToMany(mappedBy = "nomeFabricante")
     @JsonIgnore
     private Set<ModeloCarro> modelosCarro;
+    
+    
 }
