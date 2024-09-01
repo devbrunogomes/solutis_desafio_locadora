@@ -1,10 +1,8 @@
 package com.squad1.locadora.entities.pessoa;
 
 import com.squad1.locadora.entities.aluguel.Aluguel;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
