@@ -31,4 +31,7 @@ public class ApoliceSeguro {
     @OneToOne(mappedBy = "apolice")
     @JsonIgnore
     private Aluguel aluguel;
+
+
+
 }

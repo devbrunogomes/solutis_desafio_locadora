@@ -130,7 +130,7 @@ public class CarroController {
         }
     }
     @GetMapping(value = "/categoria/{categoria}")
-   public List<CategoriaDTO> buscarPorCategoria(@PathVariable String categoria){
+    public List<CategoriaDTO> buscarPorCategoria(@PathVariable String categoria){
         Categoria categoriaEnum;
 
         try {
@@ -140,18 +140,18 @@ public class CarroController {
         }
 
         List<ModeloCarro> carrosPorCategoria = modeloCarroRepository.findByCategoria(categoriaEnum);
-            List<CategoriaDTO> lista = new ArrayList<>();
+        List<CategoriaDTO> lista = new ArrayList<>();
 
-            for (ModeloCarro carros : carrosPorCategoria){
-                CategoriaDTO dto = new CategoriaDTO(
-                carros.getId(),
-                carros.getDescricao(),
-                carros.getNomeFabricante(),
-                carros.getCategoria()
-                );
-                lista.add(dto);
-    }
-            return lista;
+        for (ModeloCarro carros : carrosPorCategoria){
+            CategoriaDTO dto = new CategoriaDTO(
+                    carros.getId(),
+                    carros.getDescricao(),
+                    carros.getNomeFabricante(),
+                    carros.getCategoria()
+            );
+            lista.add(dto);
+        }
+        return lista;
     }
 
 
@@ -163,14 +163,14 @@ public class CarroController {
         List<Carro> todosCarros = carroRepository.findAll();
 
 
-       for (Carro carro : todosCarros){
+        for (Carro carro : todosCarros){
             for (Acessorio acessorio : carro.getAcessorios()){
                 if(acessorio.getId().equals(id)){
                     carrosComAcessorio.add(carro);
                     break;
                 }
             }
-       }
+        }
         return carrosComAcessorio;
     }
 
