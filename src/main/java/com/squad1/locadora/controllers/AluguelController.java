@@ -79,7 +79,7 @@ public class AluguelController {
 
         // Pegar os novos objetos de Apólice, Carro e Motorista
         Optional<ApoliceSeguro> apoliceASerIncluida = Optional.empty();
-        if (aluguelDTO.getApoliceId() != null) {
+        if (aluguelDTO.getApoliceId() == null) {
             apoliceASerIncluida = apoliceRepository.findById(aluguelDTO.getApoliceId());
         }
 
@@ -133,7 +133,9 @@ public class AluguelController {
                 motoristaASerIncluido,
                 aluguelDTO.getMetodoPagamento()
         );
-      
+
+        System.out.println("TESTE: " + novoAluguel.getId());
+
         // Inserir nova instância no banco de dados
         aluguelRepository.save(novoAluguel);
 

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "apolices")
 @NoArgsConstructor
 @AllArgsConstructor
-//@Data
+@Data
 @EqualsAndHashCode(exclude = "aluguel")
 public class ApoliceSeguro {
 
@@ -32,54 +32,6 @@ public class ApoliceSeguro {
     @JsonIgnore
     private Aluguel aluguel;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public float getValorFranquia() {
-        return valorFranquia;
-    }
-
-    public void setValorFranquia(float valorFranquia) {
-        this.valorFranquia = valorFranquia;
-    }
-
-    public boolean isProtecaoTerceiro() {
-        return protecaoTerceiro;
-    }
-
-    public void setProtecaoTerceiro(boolean protecaoTerceiro) {
-        this.protecaoTerceiro = protecaoTerceiro;
-    }
-
-    public boolean isProtecaoCausasNaturais() {
-        return protecaoCausasNaturais;
-    }
-
-    public void setProtecaoCausasNaturais(boolean protecaoCausasNaturais) {
-        this.protecaoCausasNaturais = protecaoCausasNaturais;
-    }
-
-    public boolean isProtecaoRoubo() {
-        return protecaoRoubo;
-    }
-
-    public void setProtecaoRoubo(boolean protecaoRoubo) {
-        this.protecaoRoubo = protecaoRoubo;
-    }
-
-    public Aluguel getAluguel() {
-        return aluguel;
-    }
-
-    public void setAluguel(Aluguel aluguel) {
-        this.aluguel = aluguel;
-    }
-    
-    
-    
 }
