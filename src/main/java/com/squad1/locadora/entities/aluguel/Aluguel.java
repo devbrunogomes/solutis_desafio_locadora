@@ -53,6 +53,6 @@ public class Aluguel {
     @Enumerated(EnumType.STRING)
     private MetodoPagamento metodoPagamento;
 
-    public Aluguel(long minValue, Date dataAtual, Date dataEntrega, Date dataDevolucao, float valorTotal, ApoliceSeguro apolice, Carro carroASerIncluido, Motorista motoristaASerIncluido, MetodoPagamento metodoPagamento) {
-    }
+//    public Aluguel(Date dataAtual, Date dataEntrega, Date dataDevolucao, float valorTotal, ApoliceSeguro apolice, Carro carroASerIncluido, Motorista motoristaASerIncluido, MetodoPagamento metodoPagamento) {
+//    }
 }

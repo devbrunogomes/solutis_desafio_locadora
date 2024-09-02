@@ -39,7 +39,7 @@ public class AluguelController {
         private final MotoristaRepository motoristaRepository;
         private final ApoliceRepository apoliceRepository;
 
-        @Autowired
+
         public AluguelController(
                 AluguelRepository aluguelRepository,
                 CarroRepository carroRepository,
@@ -95,7 +95,7 @@ public class AluguelController {
         if (motoristaASerIncluido == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ErrorResponse("Motorista não encontrado"));
-          }
+        }
 
         // Obter a data atual
         Calendar calendarAtual = Calendar.getInstance();
@@ -123,8 +123,8 @@ public class AluguelController {
 
         // Criar nova instância de aluguel com os objetos retornados pelos métodos findById
         Aluguel novoAluguel = new Aluguel(
-                Long.MIN_VALUE,
-                dataAtual,
+                null,
+                calendarAtual,
                 aluguelDTO.getDataEntrega(),
                 aluguelDTO.getDataDevolucao(),
                 valorTotal,
@@ -135,7 +135,7 @@ public class AluguelController {
         );
 
         // Inserir nova instância no banco de dados
-        Aluguel aluguelASerInserido = aluguelRepository.save(novoAluguel);
+        aluguelRepository.save(novoAluguel);
 
         // Retornar uma mensagem de sucesso
         return ResponseEntity.ok("Reserva realizada com sucesso.");
