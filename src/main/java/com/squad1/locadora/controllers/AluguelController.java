@@ -115,7 +115,6 @@ public class AluguelController {
             return ResponseEntity.badRequest().body("Erro: A data da devolução não pode ser anterior à data atual.");
         }
 
-
         // Calcular o valor total do aluguel
         float valorApolice = apoliceASerIncluida.map(ApoliceSeguro::getValorFranquia).orElse(0f);
         float valorDiariaCarro = carroASerIncluido.getValorDiaria();
