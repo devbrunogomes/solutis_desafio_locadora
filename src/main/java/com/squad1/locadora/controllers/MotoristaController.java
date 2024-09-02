@@ -5,7 +5,9 @@ import com.squad1.locadora.repositories.MotoristaRepository;
 import java.util.List;
 
 import com.squad1.locadora.response.ErrorResponse;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.View;
@@ -29,6 +31,19 @@ public class MotoristaController {
     public Motorista findById(@PathVariable Long id){
         Motorista result = motoristaRepository.findById(id).get();
         return result;
+    }
+   
+
+    @GetMapping(value = "/{id}/email")
+    public ResponseEntity<String> obterEmailPorUmaId(@PathVariable Long id) {
+        Optional<Motorista> motoristaSelecionado = motoristaRepository.findById(id);
+
+        if (motoristaSelecionado.isPresent()) {
+            return ResponseEntity.ok(motoristaSelecionado.get().getEmail());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Motorista com ID " + id + " não encontrado.");
+        }
     }
 
     @PostMapping

@@ -1,29 +1,39 @@
 package com.squad1.locadora.controllers;
 
+import com.squad1.locadora.DTO.CarroDTO;
 import com.squad1.locadora.DTO.CarroDisponivelDTO;
+import com.squad1.locadora.DTO.CategoriaDTO;
+import com.squad1.locadora.entities.carro.Acessorio;
 import com.squad1.locadora.entities.carro.Carro;
-import com.squad1.locadora.entities.pessoa.Motorista;
+import com.squad1.locadora.entities.carro.Categoria;
+import com.squad1.locadora.entities.carro.ModeloCarro;
+import com.squad1.locadora.repositories.AcessorioRepository;
 import com.squad1.locadora.repositories.CarroRepository;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import com.squad1.locadora.repositories.ModeloCarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-=======
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
->>>>>>> a4b1cd7815749e0074a46974392622b2a704c21d
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-<<<<<<< HEAD
-=======
 import org.springframework.web.server.ResponseStatusException;
->>>>>>> a4b1cd7815749e0074a46974392622b2a704c21d
 
 @RestController
 @RequestMapping(value = "carros")
 public class CarroController {
+
+
+    @Autowired
+    private ModeloCarroRepository modeloCarroRepository;
+
+    @Autowired
+    private AcessorioRepository acessorioRepository;
 
     @Autowired
     private CarroRepository carroRepository;
@@ -56,7 +66,7 @@ public class CarroController {
     public List<CarroDisponivelDTO> procurarCarrosDisponiveis() {
         List<Carro> todosOsCarros = this.findAll();
         List<CarroDisponivelDTO> carrosDisponiveis = new ArrayList<>();
-        
+
         //Nova instancia de DTO para personalizar a exibição
         for (Carro carro : todosOsCarros) {
             if (!carro.isReserva()) {
@@ -73,8 +83,6 @@ public class CarroController {
 
         return carrosDisponiveis;
     }
-<<<<<<< HEAD
-=======
 
     @PatchMapping(value = "/reservar-carro/{id}")
     public ResponseEntity<String> reservarCarroPorId(@PathVariable Long id) {
@@ -122,7 +130,7 @@ public class CarroController {
         }
     }
     @GetMapping(value = "/categoria/{categoria}")
-   public List<CategoriaDTO> buscarPorCategoria(@PathVariable String categoria){
+    public List<CategoriaDTO> buscarPorCategoria(@PathVariable String categoria){
         Categoria categoriaEnum;
 
         try {
@@ -132,18 +140,18 @@ public class CarroController {
         }
 
         List<ModeloCarro> carrosPorCategoria = modeloCarroRepository.findByCategoria(categoriaEnum);
-            List<CategoriaDTO> lista = new ArrayList<>();
+        List<CategoriaDTO> lista = new ArrayList<>();
 
-            for (ModeloCarro carros : carrosPorCategoria){
-                CategoriaDTO dto = new CategoriaDTO(
-                carros.getId(),
-                carros.getDescricao(),
-                carros.getNomeFabricante(),
-                carros.getCategoria()
-                );
-                lista.add(dto);
-    }
-            return lista;
+        for (ModeloCarro carros : carrosPorCategoria){
+            CategoriaDTO dto = new CategoriaDTO(
+                    carros.getId(),
+                    carros.getDescricao(),
+                    carros.getNomeFabricante(),
+                    carros.getCategoria()
+            );
+            lista.add(dto);
+        }
+        return lista;
     }
 
 
@@ -155,18 +163,17 @@ public class CarroController {
         List<Carro> todosCarros = carroRepository.findAll();
 
 
-       for (Carro carro : todosCarros){
+        for (Carro carro : todosCarros){
             for (Acessorio acessorio : carro.getAcessorios()){
                 if(acessorio.getId().equals(id)){
                     carrosComAcessorio.add(carro);
                     break;
                 }
             }
-       }
+        }
         return carrosComAcessorio;
     }
 
 
 
->>>>>>> a4b1cd7815749e0074a46974392622b2a704c21d
 }
