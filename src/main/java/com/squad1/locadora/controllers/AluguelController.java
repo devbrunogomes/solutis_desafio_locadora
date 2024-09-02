@@ -133,7 +133,7 @@ public class AluguelController {
                 motoristaASerIncluido,
                 aluguelDTO.getMetodoPagamento()
         );
-
+      
         // Inserir nova instância no banco de dados
         aluguelRepository.save(novoAluguel);
 
