@@ -83,7 +83,7 @@ A classe `Aluguel` representa uma reserva de aluguel de veículo.
 
 ### 4. GET STARTED
 
- - Verifique as credenciais do seu próprio Banco de Dados local, insira-os no arquivo .properties
+ - Verifique as credenciais do seu próprio Banco de Dados local, insira-os no arquivo `.properties`
  - Após isso, rode a aplicação para o Hibernate criar as tabelas no seu Banco de Dados
- - Para popular o Banco de Dados, vá no arquivo .properties e altere a linha 'spring.flyway.enabled=true' deixando seu valor como true
+ - Para popular o Banco de Dados, vá no arquivo `.properties` e altere a linha `spring.flyway.enabled=true` deixando seu valor como true
  - Após isso, rode a aplicação, e então o FlyWay irá popular seu Banco.
